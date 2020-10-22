@@ -19,10 +19,11 @@ function draw() {
 
   
 
-  if(bullet.collide(wall)) {
+  if(hasCollided(bullet,wall)) {
     bullet.velocityX = 0 ;
     var damage = 0.5*weight*speed*speed /thickness*thickness*thickness; 
-    console.log(damage)
+    //console.log(damage)
+    
     if(damage > 10 ) 
     {
       bullet.shapeColor = color(255,0,0);
@@ -35,4 +36,16 @@ function draw() {
   }
 
   drawSprites();
+}
+
+function hasCollided(lbullet,lwall)
+{
+  bulletRightEdge = lbullet.x +lbullet.width;
+  wallLeftEdge =lwall.x
+  if(bulletRightEdge >=wallLeftEdge)
+  {
+    return true
+
+  }
+  return false  
 }
